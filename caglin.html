@@ -22,7 +22,20 @@
 <body>
 
 
-	<div id="map" class="map"></div>	
+	<div id="map" class="map"></div>
+
+
+
+
+	<label>
+  	Izaberi podlogu:
+  	<select class="podloga" name="podloga">
+   	 <option value="">Izaberi</option>
+    	 <option value="dgudof">DGU DOF</option>
+   	 <option value="osm">OSM</option>
+  	</select>
+	</label>
+	
 	
 	
 	
@@ -70,7 +83,7 @@ const lokacije = new ol.layer.Image({
 
 
 const map = new ol.Map({
-  layers: [DOF, lokacije],
+  layers: [DOF, osm, lokacije],
   target: 'map',
   view: new ol.View({
 	  projection: htrs96,
@@ -83,6 +96,14 @@ const map = new ol.Map({
   
 	
 
+	const selectElement = document.querySelector('.podloga');
+		selectElement.addEventListener('change', (event) => {
+  		console.log (event.target.value)
+		if (event.target.value=='dgudof') {DOF.setVisible (true); osm.setVisible (false)}     
+		if (event.target.value=='osm') {DOF.setVisible (false); osm.setVisible (true)}    
+
+
+	});
 
 
 
