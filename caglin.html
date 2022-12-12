@@ -76,14 +76,26 @@ const lokacije = new ol.layer.Image({
             type: 'base',
             visible: true,
             source: new ol.source.ImageWMS({
-            url: 'https://qgiscloud.com/hmatijevic/zaweb/wms',
+            url: 'https://qgiscloud.com/hmatijevic/zaweb2/wms',
             params: {'VERSION':'1.1.1', 'LAYERS': 'lokacija', 'TILED': false}          
                     })
            });
 
 
+const tocke = new ol.layer.Image({
+            title: 'Tocke',
+            type: 'base',
+            visible: true,
+            source: new ol.source.ImageWMS({
+            url: 'https://qgiscloud.com/hmatijevic/zaweb2/wms',
+            params: {'VERSION':'1.1.1', 'LAYERS': 'SVI2', 'TILED': false}          
+                    })
+           });
+
+
+
 const map = new ol.Map({
-  layers: [DOF, osm, lokacije],
+  layers: [DOF, osm, lokacije, tocke],
   target: 'map',
   view: new ol.View({
 	  projection: htrs96,
